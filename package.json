@@ -2,9 +2,11 @@
   "name": "hyper-modular-component-template",
   "version": "0.0.0",
   "description": "Hyper Modular Component Template",
-  "main": "index.js",
+  "main": "src/input-integer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo demo/demo.js:bundle.js --live --open",
+    "build": "browserify demo/demo.js > bundle.js"
   },
   "repository": {
     "type": "git",
