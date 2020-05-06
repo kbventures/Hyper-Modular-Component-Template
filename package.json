@@ -22,6 +22,7 @@
     "budo": "^11.6.3"
   },
   "dependencies": {
-    "csjs-inject": "^1.0.1"
+    "csjs-inject": "^1.0.1",
+    "nanohtml": "^1.9.1"
   }
 }

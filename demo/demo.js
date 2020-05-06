@@ -1,31 +1,28 @@
 const csjs = require("csjs-inject");
+const html = require("nanohtml");
+
 const inputInteger = require("..");
-const parser = document.createElement("randomName");
 
-function start(css) {
-  // const x = inputInteger();
-
-  parser.innerHTML = `<div>
-  <h1>Input-integer demo</h1>
-  <div class=${css.container}></div>
+function demo() {
+  const page = html`<div class=${css.demo}>
+    <h1>input-integer demos</h1>
+    <div class=${css.container}>
+      ${inputInteger()} ${inputInteger()} ${inputInteger()}
+    </div>
   </div>`;
 
-  const page = parser.children[0];
-  const output = page.children[2];
-  const container = page.children[1];
-
-  const input1 = inputInteger();
-  const input2 = inputInteger();
-
-  container.appendChild(input1);
-  container.appendChild(input2);
-
-  document.body.appendChild(page);
+  return page;
 }
 
-start(csjs`
+const css = csjs`
+.demo{
+  margin:20px;
+  padding:20px;
+  border: 2px dashed green;
+}
   .container {
     display:flex;
     flex-direction:column;
     width:50%;
-  }`);
+  }`;
+document.body.appendChild(demo());

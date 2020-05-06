@@ -1,10 +1,17 @@
 const csjs = require("csjs-inject");
-const parser = document.createElement("randomName");
+const html = require("nanohtml");
 
 module.exports = inputInteger;
 
 function inputInteger() {
-  parser.innerHTML = `<input type="number" placeholder="Number">`;
-  const element = parser.children[0];
-  return element;
+  return html`<input
+    class=${css.inputInteger}
+    type="number"
+    placeholder="Number"
+  />`;
 }
+
+const css = csjs`
+.inputInteger {
+  background-color:lightgreen;
+}`;
