@@ -1,6 +1,9 @@
 const csjs = require("csjs-inject");
 const html = require("nanohtml");
 
+//Global Variable tracking our state
+const state = {};
+
 const inputInteger = require("..");
 
 function demo() {
@@ -19,8 +22,16 @@ function demo() {
 
   //Message = {type: 'update', body:5}
   function listen(message) {
-    const { type, body } = message;
-    if (type === "update") output.textContent = body;
+    const { from, type, body } = message;
+    if (type === "update") {
+      if (!state[from]) state[from] = { value: Number(body) };
+      else state[from].value = body;
+
+      const values = Object.keys(state).map((from) => state[from].value);
+      const summary = values.reduce((sum, x) => sum + x, 0);
+
+      output.textContent = summary;
+    }
   }
 }
 
